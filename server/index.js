@@ -32,7 +32,7 @@ app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors({
-          origin:["https://socio-app-frontend-3kkoyzl4o-abhiram12072003.vercel.app"],
+          origin:["https://socio-app-frontend-698eja4ds-abhiram12072003.vercel.app/"],
           method:["POST","GET","PATCH","DELETE"],
           credentials:true
 }));
