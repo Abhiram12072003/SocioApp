@@ -6,7 +6,7 @@
             "use": "@vercel/node"
         }
     ],
-    "installCommand": "npm install --force",
+    "installCommand": "npm install ----legacy-peer-deps",
     "routes": [
         {
             "src": "/(.*)",
