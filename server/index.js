@@ -78,6 +78,9 @@ const upload = multer({
 // const upload = multer({ storage });
 
 /* ROUTES WITH FILES */
+app.get('/',(req,res)=>{
+          res.json("HI");
+})
 app.post("/auth/register", upload.single("picture"), async(req,res)=>{
   try {
     const {
