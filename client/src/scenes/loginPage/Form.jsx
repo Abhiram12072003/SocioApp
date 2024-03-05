@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -54,14 +54,14 @@ const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
-  const [load, setLoad] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(()=>{},[load]);
   if(load){
     return <p> Loading... </p>
   }
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
-    setLoad(true);
+    setLoading(true);
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
@@ -77,7 +77,7 @@ const Form = () => {
     );
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
-    setLoad(false);
+    setLoading(false);
     if (savedUser) {
       setPageType("login");
     }
