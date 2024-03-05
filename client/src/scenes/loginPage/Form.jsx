@@ -54,9 +54,14 @@ const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
-
+  const [load, setLoad] = useState(false);
+  useEffect(()=>{},[load]);
+  if(load){
+    return <p> Loading... </p>
+  }
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
+    setLoad(true);
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
@@ -72,13 +77,14 @@ const Form = () => {
     );
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
-
+    setLoad(false);
     if (savedUser) {
       setPageType("login");
     }
   };
 
   const login = async (values, onSubmitProps) => {
+    setLoad(true);
     const loggedInResponse = await fetch("https://socio-app-gules.vercel.app/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -95,6 +101,7 @@ const Form = () => {
       );
       navigate("/home");
     }
+    setLoading(false);
   };
 
   const handleFormSubmit = async (values, onSubmitProps) => {
