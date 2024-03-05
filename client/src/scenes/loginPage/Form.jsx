@@ -55,8 +55,8 @@ const Form = () => {
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
   const [loading, setLoading] = useState(false);
-  useEffect(()=>{},[load]);
-  if(load){
+  useEffect(()=>{},[loading]);
+  if(loading){
     return <p> Loading... </p>
   }
   const register = async (values, onSubmitProps) => {
@@ -84,7 +84,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    setLoad(true);
+    setLoading(true);
     const loggedInResponse = await fetch("https://socio-app-gules.vercel.app/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
